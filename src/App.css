@@ -1,0 +1,22 @@
+body {
+  margin: 0 auto;
+}
+
+.main-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.fav-cities {
+  height: 100vh;
+  width: 20vw;
+  background-color: steelblue;
+}
+
+.weather-div {
+  height: 100vh;
+  width: 80vw;
+  background-color: wheat;   
+}
