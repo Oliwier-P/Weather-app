@@ -8,8 +8,8 @@ export default function CityBox({name,temp,icon}: CityBoxProps) {
   return (
     <>
         <div className='city-box'>
-            {name}
-            {temp}
+            <span>{name}</span>
+            <span>{temp}</span>
             <img src={icon} />
         </div>
     </>

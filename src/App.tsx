@@ -13,7 +13,7 @@ export default function App() {
     .then((respond) => respond.json())
     .then((data) => setWeather(
       {
-        temp_c: data.current.temp_c,
+        temp_c: Math.round(data.current.temp_c),
         wind_kph: data.current.wind_kph,
         humidity: data.current.humidity,
         uv: data.current.uv,
@@ -34,6 +34,7 @@ export default function App() {
       <div className='main-container' >
 
         <div className='fav-cities' >
+          <input type="text" className='fav-cities-inpt' />
           <CityBox name={city} temp={weather?.temp_c} icon={weather?.icon} />
         </div>
         
