@@ -2,6 +2,8 @@ import './App.css'
 import { useEffect, useState } from 'react'; 
 import { currentWeather } from './Types';
 import CityBox from './components/CityBox';
+import WeatherNow from './components/WeatherNow';
+import WeatherFuture from './components/WeatherFuture';
 
 export default function App() {
 
@@ -31,16 +33,15 @@ export default function App() {
   return (
     <>
 
-      <div className='main-container' >
+      <div className='main-container wrap-flex' >
 
         <div className='fav-cities' >
           <input type="text" className='fav-cities-inpt' />
           <CityBox name={city} temp={weather?.temp_c} icon={weather?.icon} />
         </div>
         
-        <div className='weather-div' >
-          <ul>
-            {city} Today:
+        {/* <ul>
+            {city}
             <li>Temperature - {weather?.temp_c}</li>
             <li>Wind_kph - {weather?.wind_kph}</li>
             <li>Humidity - {weather?.humidity}</li>
@@ -48,9 +49,22 @@ export default function App() {
             <li>Precip_mm - {weather?.precip_mm}</li>
             <li>Icon - </li>
             <img src={weather?.icon} />
-          </ul>
+          </ul> */}
+
+        <div className='weather-div wrap-flex' >
           
-          
+          <WeatherNow 
+          temperature={weather?.temp_c} 
+          wind={weather?.wind_kph} 
+          humidity={weather?.humidity}
+          uv={weather?.uv}  
+          precip={weather?.precip_mm}
+          icon={weather?.icon}
+          />
+
+          <WeatherFuture temperature={0} icon={""} />
+          <WeatherFuture temperature={0} icon={""} />
+          <WeatherFuture temperature={0} icon={""} />
 
         </div>
 

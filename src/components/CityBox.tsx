@@ -7,7 +7,7 @@ interface CityBoxProps {
 export default function CityBox({name,temp,icon}: CityBoxProps) {
   return (
     <>
-        <div className='city-box'>
+        <div className='city-box wrap-flex'>
             <span>{name}</span>
             <span>{temp}</span>
             <img src={icon} />

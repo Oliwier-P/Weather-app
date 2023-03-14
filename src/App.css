@@ -2,11 +2,14 @@ body {
   margin: 0 auto;
 }
 
+.wrap-flex {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .main-container {
   height: 100vh;
   width: 100vw;
-  display: flex;
-  flex-wrap: wrap;
 }
 
 .fav-cities {
@@ -15,16 +18,8 @@ body {
   background-color: steelblue;
 }
 
-.weather-div {
-  height: 100vh;
-  width: 80vw;
-  background-color: wheat;   
-}
-
 .city-box {
   box-sizing: border-box;
-  display: flex;
-  flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
   border: 3px black solid;
@@ -33,4 +28,45 @@ body {
 .fav-cities-inpt {
   width: 90%;
   margin: 5%;
+}
+
+.weather-div {
+  height: 100vh;
+  width: 80vw;
+  background-color: wheat;   
+  justify-content: space-around;
+  align-content: space-around;
+}
+
+.weather-now {
+  width: 90%;
+  height: 60vh;
+}
+
+.weather-future {
+  width: 20%;
+  height: 15vh;
+  background-color: aquamarine;
+}
+
+.weather-data-temp {
+  width: 40%;
+  height: 100%;
+  border: black 3px solid;
+  box-sizing: border-box;
+}
+
+.weather-data {
+  width: 60%;
+  height: 100%;
+  justify-content: space-around;
+  align-content: space-around;
+  box-sizing: border-box;
+}
+
+.weather-data > div {
+  border: black 3px solid;
+  width: 40%;
+  height: 30%;
+  box-sizing: border-box;
 }
