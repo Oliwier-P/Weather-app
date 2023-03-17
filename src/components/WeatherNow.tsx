@@ -6,10 +6,11 @@ interface WeatherNowProps{
     humidity: number | undefined,
     uv: number | undefined,
     precip: number | undefined,
+    pressure: number | undefined
     icon: string | undefined
 }
 
-export default function WeatherNow({temperature,wind,humidity,uv,precip,icon}: WeatherNowProps) {
+export default function WeatherNow({temperature,wind,humidity,uv,precip,pressure,icon}: WeatherNowProps) {
   return (
     <>
         <div className='weather-now wrap-flex'>
@@ -31,7 +32,10 @@ export default function WeatherNow({temperature,wind,humidity,uv,precip,icon}: W
                     Precip - {precip}
                 </div>
                 <div>
-                    1000 Hpa
+                    {pressure} hPa
+                </div>
+                <div>
+                    
                 </div>
             </div>
         </div>

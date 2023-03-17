@@ -9,7 +9,8 @@ export default function WeatherFuture({temperature,icon}: WeatherFutureProps) {
   return (
     <>
         <div className='weather-future'>
-            31*C Ikona
+            {temperature}
+            <img src={icon} />
         </div>
     </>
   )

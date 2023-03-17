@@ -4,7 +4,13 @@ type currentWeather = {
     humidity: number,
     uv: number,
     precip_mm: number,
+    pressure: number
     icon: string
 } 
 
-export type {currentWeather};
+type forecastWeather = {
+    temp_c: number,
+    icon: string
+}
+
+export type {currentWeather, forecastWeather};
