@@ -5,12 +5,14 @@ type currentWeather = {
     uv: number,
     precip_mm: number,
     pressure: number
-    icon: string
+    icon: string,
+    cloud: number
 } 
 
 type forecastWeather = {
     temp_c: number,
-    icon: string
+    icon: string,
+    date: string
 }
 
 export type {currentWeather, forecastWeather};

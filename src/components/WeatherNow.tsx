@@ -7,16 +7,17 @@ interface WeatherNowProps{
     uv: number | undefined,
     precip: number | undefined,
     pressure: number | undefined
-    icon: string | undefined
+    icon: string | undefined,
+    cloud: number | undefined
 }
 
-export default function WeatherNow({temperature,wind,humidity,uv,precip,pressure,icon}: WeatherNowProps) {
+export default function WeatherNow({temperature,wind,humidity,uv,precip,pressure,icon,cloud}: WeatherNowProps) {
   return (
     <>
         <div className='weather-now wrap-flex'>
             <div className='weather-data-temp'>
-                {temperature}
-                <img src={icon} />
+                {temperature}°C
+                <img style={{width: '20vw'}} src={icon} />
             </div>
             <div className='weather-data wrap-flex'>
                 <div>
@@ -35,7 +36,7 @@ export default function WeatherNow({temperature,wind,humidity,uv,precip,pressure
                     {pressure} hPa
                 </div>
                 <div>
-                    
+                    cloud - {cloud} 
                 </div>
             </div>
         </div>

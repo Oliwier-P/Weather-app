@@ -10,10 +10,11 @@ import Autocomplete from '@mui/material/Autocomplete';
 
 export default function App() {
 
+
   const [weather, setWeather] = useState<currentWeather>();
-  const [forecast1, setForecast1] = useState<forecastWeather>();
-  const [forecast2, setForecast2] = useState<forecastWeather>();
-  const [forecast3, setForecast3] = useState<forecastWeather>();
+  const [forecast1, setForecast1] = useState<forecastWeather>({ temp_c: 0, icon: "", date: "" });
+  const [forecast2, setForecast2] = useState<forecastWeather>({ temp_c: 0, icon: "", date: "" });
+  const [forecast3, setForecast3] = useState<forecastWeather>({ temp_c: 0, icon: "", date: "" });
 
   const [city, setCity] = useState("Slupsk");
 
@@ -34,25 +35,29 @@ export default function App() {
           uv: data.current.uv,
           precip_mm: data.current.precip_mm,
           pressure: data.current.pressure_mb,
-          icon: data.current.condition.icon
+          icon: data.current.condition.icon,
+          cloud: data.current.cloud
         }
       ),
       setForecast1(
         {
           temp_c: Math.round(data.forecast.forecastday[1].day.avgtemp_c),
-          icon: data.forecast.forecastday[1].day.condition.icon
+          icon: data.forecast.forecastday[1].day.condition.icon,
+          date: data.forecast.forecastday[1].date
         }
       ),
       setForecast2(
         {
           temp_c: Math.round(data.forecast.forecastday[2].day.avgtemp_c),
-          icon: data.forecast.forecastday[2].day.condition.icon
+          icon: data.forecast.forecastday[2].day.condition.icon,
+          date: data.forecast.forecastday[2].date
         }
       ),
       setForecast3(
         {
           temp_c: Math.round(data.forecast.forecastday[3].day.avgtemp_c),
-          icon: data.forecast.forecastday[3].day.condition.icon
+          icon: data.forecast.forecastday[3].day.condition.icon,
+          date: data.forecast.forecastday[3].date
         }
       )
     ));
@@ -68,10 +73,7 @@ export default function App() {
       <div className='main-container wrap-flex' >
 
         <div className='fav-cities' >
-
-          <div>{`value: ${value !== null ? `'${value}'` : 'null'}`}</div>
-          <div>{`inputValue: '${inputValue}'`}</div>
-          <br />
+          
           <Autocomplete
             value={value}
             onChange={(event: any, newValue: string | null) => {setValue(newValue)}}
@@ -95,11 +97,12 @@ export default function App() {
           precip={weather?.precip_mm}
           pressure={weather?.pressure}
           icon={weather?.icon}
+          cloud={weather?.cloud}
           />
 
-          <WeatherFuture temperature={forecast1?.temp_c} icon={forecast1?.icon} />
-          <WeatherFuture temperature={forecast2?.temp_c} icon={forecast2?.icon} />
-          <WeatherFuture temperature={forecast3?.temp_c} icon={forecast3?.icon} />
+          <WeatherFuture temperature={forecast1?.temp_c} icon={forecast1?.icon} date={forecast1?.date} />
+          <WeatherFuture temperature={forecast2?.temp_c} icon={forecast2?.icon} date={forecast2?.date} />
+          <WeatherFuture temperature={forecast3?.temp_c} icon={forecast3?.icon} date={forecast3?.date} />
 
         </div>
 
