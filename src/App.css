@@ -98,3 +98,39 @@ body {
   box-shadow: 1px 5px 10px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
 }
+
+.w-d-t-1 {
+  width: 60%;
+  height: 80%;
+  font-size: 25vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.w-d-t-2 {
+  width: 40%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+}
+
+.pic-temp-now {
+  width: 150%;
+  height: 100%;
+  margin-left: -50%;
+}
+
+.pic-future {
+  width: 20%;
+  height: 50%;
+}
+
+.autocomplete {
+  width: 80%;
+}
+
+.weather-div-names {
+  width: 80%;
+  font-size: 5vh;
+}

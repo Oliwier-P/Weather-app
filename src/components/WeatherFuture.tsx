@@ -17,7 +17,7 @@ export default function WeatherFuture({temperature,icon,date}: WeatherFutureProp
         <div className='weather-future'>
             {weekday[data.getDay()]}<br />
             {temperature}°C
-            <img src={icon} />
+            <img src={icon} className="pic-future" />
         </div>
     </>
   )

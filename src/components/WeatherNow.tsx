@@ -16,27 +16,33 @@ export default function WeatherNow({temperature,wind,humidity,uv,precip,pressure
     <>
         <div className='weather-now wrap-flex'>
             <div className='weather-data-temp'>
-                {temperature}°C
-                <img style={{width: '20vw'}} src={icon} />
+                <div className='w-d-t-1'>
+                   {temperature}
+                </div>
+                <div className='w-d-t-2'>
+                    <div>°C</div>
+                    <div><img src={icon} className="pic-temp-now" /></div>
+                </div>
+                
             </div>
             <div className='weather-data wrap-flex'>
                 <div>
-                    Wind - {wind}
+                    Wind - {wind} km/h
                 </div>
                 <div>
-                    Humidity - {humidity}
+                    Humidity - {humidity}%
                 </div>
                 <div>
                     UV - {uv}
                 </div>
                 <div>
-                    Precip - {precip}
+                    Precip - {precip} mm
                 </div>
                 <div>
                     {pressure} hPa
                 </div>
                 <div>
-                    cloud - {cloud} 
+                    cloud - {cloud}%
                 </div>
             </div>
         </div>

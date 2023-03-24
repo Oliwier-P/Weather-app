@@ -7,9 +7,9 @@ import WeatherFuture from './components/WeatherFuture';
 import React from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
+import cities from './cities.json';
 
 export default function App() {
-
 
   const [weather, setWeather] = useState<currentWeather>();
   const [forecast1, setForecast1] = useState<forecastWeather>({ temp_c: 0, icon: "", date: "" });
@@ -21,7 +21,7 @@ export default function App() {
   const [value, setValue] = useState<string | null>();
   const [inputValue, setInputValue] = useState<string>('');
 
-  const city_list = [ "Slupsk", "Tokyo", "New York","End City" ];
+  const city_list = [''];
 
   const FetchData = () => {
     fetch(`http://api.weatherapi.com/v1/forecast.json?key=c890eee18037494394e111328230903&q=${city}&days=4&aqi=no&alerts=no`)
@@ -81,14 +81,14 @@ export default function App() {
             onInputChange={(event, newInputValue) => {setInputValue(newInputValue)}}
             id="controllable-states-demo"
             options={city_list}
-            sx={{ width: 300 }}
             renderInput={(params) => <TextField {...params} label="City" />}
+            className="autocomplete"
           />
           <CityBox name={city} temp={weather?.temp_c} icon={weather?.icon} />
         </div>
 
         <div className='weather-div wrap-flex' >
-          {value}
+          <div className='weather-div-names' >Poland, Słupsk</div>
           <WeatherNow 
           temperature={weather?.temp_c} 
           wind={weather?.wind_kph} 
