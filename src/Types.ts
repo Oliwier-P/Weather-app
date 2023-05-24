@@ -15,4 +15,11 @@ type forecastWeather = {
     date: string
 }
 
-export type {currentWeather, forecastWeather};
+type City = {
+    country: string,
+    name: string,
+    lat: number,
+    lng: number
+}
+
+export type {currentWeather, forecastWeather, City};

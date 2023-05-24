@@ -7,7 +7,8 @@ import WeatherFuture from './components/WeatherFuture';
 import React from 'react';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
-import cities from './cities.json';
+import citiesData from './cities.json';
+import { City } from './Types';
 
 export default function App() {
 
@@ -21,10 +22,10 @@ export default function App() {
   const [value, setValue] = useState<string | null>();
   const [inputValue, setInputValue] = useState<string>('');
 
-  const city_list = [''];
+  const city_list = citiesData;
 
   const FetchData = () => {
-    fetch(`http://api.weatherapi.com/v1/forecast.json?key=c890eee18037494394e111328230903&q=${city}&days=4&aqi=no&alerts=no`)
+    fetch(`http://api.weatherapi.com/v1/forecast.json?key=c890eee18037494394e111328230903&q=${city}&days=5&aqi=no&alerts=no`)
     .then((respond) => respond.json())
     .then((data) => (
       setWeather(
@@ -65,6 +66,7 @@ export default function App() {
 
   useEffect(() => {
     FetchData();
+
   }, []);
   
   return (
@@ -74,16 +76,16 @@ export default function App() {
 
         <div className='fav-cities' >
           
-          <Autocomplete
+          {/* <Autocomplete
             value={value}
             onChange={(event: any, newValue: string | null) => {setValue(newValue)}}
             inputValue={inputValue}
             onInputChange={(event, newInputValue) => {setInputValue(newInputValue)}}
             id="controllable-states-demo"
-            options={city_list}
+            options={citiesData.name}
             renderInput={(params) => <TextField {...params} label="City" />}
             className="autocomplete"
-          />
+          /> */}
           <CityBox name={city} temp={weather?.temp_c} icon={weather?.icon} />
         </div>
 
