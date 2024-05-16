@@ -12,7 +12,7 @@ export default function WeatherDays() {
         <div className="current-data">
           <span className="temperature">25°C</span>
           <span className="description">Sunny</span>
-          <div className="imageD"></div>
+          <div className="current-image"></div>
         </div>
 
         <div className="future-data">
@@ -21,7 +21,7 @@ export default function WeatherDays() {
               <div className="future-day" key={day}>
                 <span className="future-day-text">{day}</span>
                 <span className="future-temperature">25°C</span>
-                <div className="future-imageD"></div>
+                <div className="future-image"></div>
               </div>
             );
           })}

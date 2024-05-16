@@ -4,7 +4,7 @@ import { currentWeather, forecastWeather } from "./Types";
 import React from "react";
 import citiesData from "./cities.json";
 import WeatherDays from "./components/WeatherDays";
-import WeatherTemperature from "./components/WeatherTemperature";
+import WeatherChart from "./components/WeatherChart";
 import WeatherInformation from "./components/WeatherInformation";
 import InputCity from "./components/InputCity";
 import DegreeSwitch from "./components/DegreeSwitch";
@@ -71,7 +71,7 @@ export default function App() {
           <DegreeSwitch />
         </div>
 
-        <WeatherTemperature />
+        <WeatherChart />
         <WeatherInformation />
       </div>
     </div>

@@ -18,6 +18,22 @@ $primary-color: #2180e1;
   height: 100vh;
   border-top-right-radius: 5%;
   border-bottom-right-radius: 5%;
+
+  @media screen and (max-width: 768px) {
+    width: 100%;
+    height: 50%;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 5%;
+  }
+
+  @media screen and (max-width: 1100px) {
+    width: 40%;
+    height: 100vh;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 5%;
+  }
 }
 
 .city-data {
@@ -26,20 +42,28 @@ $primary-color: #2180e1;
   text-align: left;
   flex-direction: column;
   display: flex;
-}
 
-.city {
-  font-size: 2.5em;
-  color: white;
-  margin-top: 10%;
-  margin-left: 10%;
-}
+  .city {
+    font-size: 2.5vw;
+    color: white;
+    margin-top: 10%;
+    margin-left: 10%;
 
-.day {
-  font-size: 1.5em;
-  color: white;
-  margin-top: 1%;
-  margin-left: 10%;
+    @media screen and (max-width: 768px) {
+      font-size: 5vw;
+    }
+  }
+
+  .day {
+    font-size: 1.5vw;
+    color: white;
+    margin-top: 1%;
+    margin-left: 10%;
+
+    @media screen and (max-width: 768px) {
+      font-size: 3vw;
+    }
+  }
 }
 
 .current-data {
@@ -49,26 +73,30 @@ $primary-color: #2180e1;
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-}
 
-.temperature {
-  width: 100%;
-  text-align: center;
-  font-size: 8em;
-  color: white;
-}
+  .temperature {
+    width: 100%;
+    text-align: center;
+    font-size: 8vw;
+    color: white;
 
-.description {
-  text-align: center;
-  font-size: 1.5em;
-  color: white;
-  padding-right: 5%;
-}
+    @media screen and (max-width: 768px) {
+      font-size: 15vw;
+    }
+  }
 
-.imageD {
-  width: 100px;
-  height: 100px;
-  background-color: rgb(252, 209, 91);
+  .description {
+    text-align: center;
+    font-size: 1.5em;
+    color: white;
+    padding-right: 5%;
+  }
+
+  .current-image {
+    width: 100px;
+    height: 100px;
+    background-color: rgb(252, 209, 91);
+  }
 }
 
 .future-data {
@@ -78,33 +106,33 @@ $primary-color: #2180e1;
   display: flex;
   justify-content: center;
   align-items: center;
-}
 
-.future-day {
-  width: 80%;
-  height: 15%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin: 3%;
-  border-bottom: #7db7fc 4px solid;
-}
+  .future-day {
+    width: 80%;
+    height: 15%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 3%;
+    border-bottom: #7db7fc 4px solid;
 
-.future-day-text {
-  font-size: 1.5em;
-  color: white;
-  margin-left: 5%;
-}
+    .future-day-text {
+      font-size: 1.5em;
+      color: white;
+      margin-left: 5%;
+    }
 
-.future-temperature {
-  font-size: 1.5em;
-  color: white;
-}
+    .future-temperature {
+      font-size: 1.5em;
+      color: white;
+    }
 
-.future-imageD {
-  width: 50px;
-  height: 50px;
-  background-color: rgb(252, 209, 91);
+    .future-image {
+      width: 50px;
+      height: 50px;
+      background-color: rgb(252, 209, 91);
+    }
+  }
 }
 
 .weather-data-container {
@@ -114,6 +142,10 @@ $primary-color: #2180e1;
   align-items: center;
   height: 100vh;
   width: 70%;
+
+  @media screen and (max-width: 1100px) {
+    width: 60%;
+  }
 }
 
 .input-and-switch-conatiner {
@@ -121,20 +153,53 @@ $primary-color: #2180e1;
   justify-content: space-between;
   width: 80%;
   height: 5%;
+
+  .input-city {
+    width: 40%;
+    height: 80%;
+    margin-right: 40%;
+    border-radius: 40px;
+    border: none;
+  }
 }
 
-.input-city {
-  width: 40%;
-  height: 80%;
-  margin-right: 40%;
-  border-radius: 40px;
-  border: none;
-}
-
-.temperature-chart {
-  background-color: rgb(116, 116, 116);
+.chart {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
   width: 80%;
   height: 40%;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: center;
+  align-content: space-around;
+
+  @media screen and (max-width: 1100px) {
+    display: none;
+  }
+
+  .chart-text-and-filter {
+    width: 90%;
+    height: 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .chart-text {
+      font-size: 1.5em;
+    }
+
+    .chart-filter {
+      background-color: #d9d9d9;
+      width: 15%;
+      height: 80%;
+      border-radius: 40px;
+      border: none;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
 }
 
 .weather-information {
@@ -143,6 +208,10 @@ $primary-color: #2180e1;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-gap: 30px;
+
+  @media screen and (max-width: 1100px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .box {
