@@ -4,6 +4,7 @@ export default function Humidity() {
       <div className="box">
         <span className="box-title">Humidity</span>
         <span className="box-data">70%</span>
+        <span className="box-styled-data"></span>
       </div>
     </>
   );
