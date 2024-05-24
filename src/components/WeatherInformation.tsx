@@ -1,22 +1,22 @@
-import CloudCover from "./CloudBox";
-import Humidity from "./Humidity";
-import IndexUV from "./IndexUV";
-import PerceivedBox from "./PerceivedBox";
-import Precipitation from "./Precipitation";
-import Pressure from "./Pressure";
-import VisibilityBox from "./VisibilityBox";
-import WindSpeed from "./WindSpeed";
+import CloudCover from "./WeatherData/CloudBox";
+import Humidity from "./WeatherData/Humidity";
+import IndexUV from "./WeatherData/IndexUV";
+import PerceivedBox from "./WeatherData/PerceivedBox";
+import Precipitation from "./WeatherData/Precipitation";
+import Pressure from "./WeatherData/Pressure";
+import VisibilityBox from "./WeatherData/VisibilityBox";
+import WindSpeed from "./WeatherData/WindSpeed";
 
 export default function WeatherInformation() {
   return (
     <>
       <div className="weather-information">
         <PerceivedBox />
-        <Pressure />
+        <Pressure pressure={1012} />
         <IndexUV />
-        <Precipitation />
-        <WindSpeed />
         <Humidity />
+        <WindSpeed />
+        <Precipitation precipitation={3.4} />
         <CloudCover />
         <VisibilityBox />
       </div>

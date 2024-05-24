@@ -70,9 +70,10 @@ export default function App() {
           <InputCity />
           <DegreeSwitch />
         </div>
-
-        <WeatherChart />
-        <WeatherInformation />
+        <div className="weather-information-container">
+          <WeatherChart />
+          <WeatherInformation />
+        </div>
       </div>
     </div>
   );

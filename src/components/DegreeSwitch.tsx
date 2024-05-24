@@ -1,12 +1,13 @@
 export default function DegreeSwitch() {
   return (
     <>
-      <span className="degree">°C</span>
-      <label className="degree-switch">
-        <input type="checkbox" />
-        <span className="degree-slider" />
-      </label>
-      <span className="degree">°F</span>
+      <div className="switch-container">
+        <span className="degree">°C</span>
+
+        <input className="degree-switch" type="checkbox" />
+
+        <span className="degree">°F</span>
+      </div>
     </>
   );
 }
