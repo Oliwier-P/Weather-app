@@ -26,7 +26,7 @@ export default function WeatherTemperature() {
         bottom: 0,
       }}
     >
-      <CartesianGrid stroke="#ACACAC" horizontal={false} height={180} />
+      <CartesianGrid className="chart-grid" stroke="#ACACAC" horizontal={false} />
       <YAxis domain={[21, 28]} allowDataOverflow={true} hide={true} />
       <XAxis xAxisId={0} dataKey="temp" strokeOpacity={0} orientation="top" />
       <XAxis xAxisId={1} dataKey="name" strokeOpacity={0} orientation="bottom" />
@@ -39,7 +39,6 @@ export default function WeatherTemperature() {
       <div className="chart">
         <div className="chart-text-and-filter">
           <span className="chart-text">Upcoming hours</span>
-          <div className="chart-filter">Temperature</div>
         </div>
         <ResponsiveContainer width="100%" height="60%">
           {renderAreaChart}

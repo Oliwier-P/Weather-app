@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background-color: #f0f0f0;
+  background-color: #ffffff;
 }
 :root {
   --primary-color: #2180e1;
@@ -10,7 +10,7 @@ body {
   --dark-gray: #515151;
   --current-font: #ffffff;
   --future-accent: #7db7fc;
-  --box: #ffffff;
+  --box: #f6f6f6;
 
   --box-title-font-size: 1.5vh;
   --box-data-font-size: 2.2vh;
@@ -167,10 +167,18 @@ body {
       margin-right: 40%;
       border-radius: 40px;
       border: none;
+      background-color: var(--box);
+      box-sizing: border-box;
+      padding-left: 20px;
+      font-size: 1rem;
+      text-transform: capitalize;
+
+      &:focus {
+        outline: none;
+      }
 
       &::placeholder {
         font-size: 1rem;
-        padding-left: 20px;
       }
     }
 
@@ -238,14 +246,14 @@ body {
 
   .chart {
     border-radius: 10px;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
     width: 80%;
     height: 40%;
     flex-wrap: wrap;
     display: flex;
     justify-content: center;
     align-content: space-around;
-    background-color: #ffffff;
+    background-color: var(--box);
 
     @media screen and (max-width: 1100px) {
       display: none;
@@ -264,18 +272,7 @@ body {
       align-items: center;
 
       .chart-text {
-        font-size: 1.5em;
-      }
-
-      .chart-filter {
-        background-color: var(--light-gray);
-        width: 15%;
-        height: 80%;
-        border-radius: 40px;
-        border: none;
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        font-size: 1.5rem;
       }
     }
   }
@@ -309,7 +306,7 @@ body {
   .box {
     background-color: var(--box);
     border-radius: 30px;
-    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2);
     flex-wrap: wrap;
     display: flex;
     justify-content: center;
