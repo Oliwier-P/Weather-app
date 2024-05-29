@@ -1,24 +1,20 @@
-import { AreaChart, Line, CartesianGrid, Area, XAxis, YAxis, ResponsiveContainer } from "recharts";
+import { AreaChart, CartesianGrid, Area, XAxis, YAxis, ResponsiveContainer } from "recharts";
+import { upcomingHours } from "../Types";
 
-export default function WeatherTemperature() {
-  const data = [
-    { name: "10:00", temp: 24 },
-    { name: "11:00", temp: 25 },
-    { name: "12:00", temp: 24 },
-    { name: "13:00", temp: 24 },
-    { name: "14:00", temp: 23 },
-    { name: "15:00", temp: 25 },
-    { name: "16:00", temp: 26 },
-    { name: "17:00", temp: 25 },
-    { name: "18:00", temp: 25 },
-    { name: "19:00", temp: 23 },
-  ];
+interface WeatherChartProps {
+  in_celcius: boolean;
+  hourlyData: upcomingHours[];
+}
+
+export default function WeatherTemperature({ in_celcius, hourlyData }: WeatherChartProps) {
+  const min = Math.min(...hourlyData.map((hour) => (in_celcius ? hour.temp_c : hour.temp_f)));
+  const max = Math.max(...hourlyData.map((hour) => (in_celcius ? hour.temp_c : hour.temp_f)));
 
   const renderAreaChart = (
     <AreaChart
       width={1100}
       height={200}
-      data={data}
+      data={hourlyData}
       margin={{
         top: 0,
         right: 50,
@@ -27,9 +23,9 @@ export default function WeatherTemperature() {
       }}
     >
       <CartesianGrid className="chart-grid" stroke="#ACACAC" horizontal={false} />
-      <YAxis domain={[21, 28]} allowDataOverflow={true} hide={true} />
-      <XAxis xAxisId={0} dataKey="temp" strokeOpacity={0} orientation="top" />
-      <XAxis xAxisId={1} dataKey="name" strokeOpacity={0} orientation="bottom" />
+      <YAxis domain={[min - 3, max + 3]} allowDataOverflow={true} hide={true} />
+      <XAxis xAxisId={0} dataKey={`${in_celcius ? "temp_c" : "temp_f"}`} strokeOpacity={0} orientation="top" />
+      <XAxis xAxisId={1} dataKey="time" strokeOpacity={0} orientation="bottom" />
       <Area type="linear" dataKey="temp" stroke="#2180e1" fill="#2180e1" />
     </AreaChart>
   );
