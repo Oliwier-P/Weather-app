@@ -1,5 +1,11 @@
-export default function WeatherDays() {
-  const days = ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+import { currentWeather } from "../Types";
+
+interface WeatherDaysProps {
+  weather: currentWeather;
+}
+
+export default function WeatherDays({ weather }: WeatherDaysProps) {
+  const days = ["Tuesday", "Wednesday", "Thursday"];
 
   return (
     <>
@@ -10,7 +16,7 @@ export default function WeatherDays() {
         </div>
 
         <div className="current-data">
-          <span className="temperature">25°C</span>
+          <span className="temperature">{weather!.temp_c}°C</span>
           <span className="description">Sunny</span>
           <div className="current-image"></div>
         </div>
@@ -20,7 +26,7 @@ export default function WeatherDays() {
             return (
               <div className="future-day" key={day}>
                 <span className="future-day-text">{day}</span>
-                <span className="future-temperature">25°C</span>
+                <span className="future-temperature">0°C</span>
                 <div className="future-image"></div>
               </div>
             );

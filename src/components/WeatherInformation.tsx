@@ -6,19 +6,24 @@ import Precipitation from "./WeatherData/Precipitation";
 import Pressure from "./WeatherData/Pressure";
 import VisibilityBox from "./WeatherData/VisibilityBox";
 import WindSpeed from "./WeatherData/WindSpeed";
+import { currentWeather } from "../Types";
 
-export default function WeatherInformation() {
+interface WeatherInformationProps {
+  weather?: currentWeather;
+}
+
+export default function WeatherInformation({ weather }: WeatherInformationProps) {
   return (
     <>
       <div className="weather-information">
-        <PerceivedBox />
-        <Pressure pressure={1012} />
-        <IndexUV />
-        <Humidity />
-        <WindSpeed />
-        <Precipitation precipitation={3.4} />
-        <CloudCover />
-        <VisibilityBox />
+        <PerceivedBox feelslike={weather!.feelslike_c} />
+        <Pressure pressure={weather!.pressure} />
+        <IndexUV uv={weather!.uv} />
+        <Humidity humidity={weather!.humidity} />
+        <WindSpeed windSpeed={weather!.wind_kph} />
+        <Precipitation precipitation={weather!.precip_mm} />
+        <CloudCover cloudCover={weather!.cloud} />
+        <VisibilityBox visibility={weather!.visibility} />
       </div>
     </>
   );
