@@ -1576,7 +1576,7 @@ export default function App() {
       feelslike_c: parseInt(dane.list[0].main.feels_like.toFixed(2)),
       feelslike_f: parseInt((dane.list[0].main.feels_like * 1.8 + 32).toFixed(2)),
       pressure: dane.list[0].main.pressure,
-      uv: 0,
+      uv: 2,
       precip_mm: dane.list[0].rain ? dane.list[0].rain["3h"] : 0,
       wind_kph: dane.list[0].wind.speed,
       humidity: dane.list[0].main.humidity,

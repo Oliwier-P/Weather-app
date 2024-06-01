@@ -1,5 +1,7 @@
 import { AreaChart, CartesianGrid, Area, XAxis, YAxis, ResponsiveContainer } from "recharts";
 import { upcomingHours } from "../Types";
+import { useEffect, useState } from "react";
+import { set } from "date-fns";
 
 interface WeatherChartProps {
   in_celcius: boolean;
@@ -7,8 +9,16 @@ interface WeatherChartProps {
 }
 
 export default function WeatherTemperature({ in_celcius, hourlyData }: WeatherChartProps) {
-  const min = Math.min(...hourlyData.map((hour) => (in_celcius ? hour.temp_c : hour.temp_f)));
-  const max = Math.max(...hourlyData.map((hour) => (in_celcius ? hour.temp_c : hour.temp_f)));
+  const [minTemp, setMinTemp] = useState<number>();
+  const [maxTemp, setMaxTemp] = useState<number>();
+
+  useEffect(() => {
+    const min = Math.min(...hourlyData.map((hour) => (in_celcius ? hour.temp_c : hour.temp_f)));
+    const max = Math.max(...hourlyData.map((hour) => (in_celcius ? hour.temp_c : hour.temp_f)));
+
+    setMinTemp(min);
+    setMaxTemp(max);
+  }, [hourlyData, in_celcius]);
 
   const renderAreaChart = (
     <AreaChart
@@ -23,10 +33,10 @@ export default function WeatherTemperature({ in_celcius, hourlyData }: WeatherCh
       }}
     >
       <CartesianGrid className="chart-grid" stroke="#ACACAC" horizontal={false} />
-      <YAxis domain={[min - 3, max + 3]} allowDataOverflow={true} hide={true} />
+      <YAxis domain={[minTemp! - 3, maxTemp! + 3]} allowDataOverflow={true} hide={true} />
       <XAxis xAxisId={0} dataKey={`${in_celcius ? "temp_c" : "temp_f"}`} strokeOpacity={0} orientation="top" />
       <XAxis xAxisId={1} dataKey="time" strokeOpacity={0} orientation="bottom" />
-      <Area type="linear" dataKey="temp" stroke="#2180e1" fill="#2180e1" />
+      <Area type="linear" dataKey={`${in_celcius ? "temp_c" : "temp_f"}`} stroke="#2180e1" fill="#2180e1" />
     </AreaChart>
   );
 
