@@ -1520,20 +1520,20 @@ export default function App() {
     cloud: 0,
     visibility: 0,
     in_celcius: true,
+    date: "",
   });
   const [city, setCity] = useState<City>({
     name: "",
     country: "",
-    lat: 0,
-    lng: 0,
-    date: "",
+    lat: "0",
+    lng: "0",
   });
   const [forecast, setForecast] = useState<forecastWeather[]>([]);
   const [hourlyTemperature, setHourlyTemperature] = useState<upcomingHours[]>([]);
 
-  const FetchData = () => {
-    const lat = 30.438;
-    const lng = -89.1028;
+  const FetchData = (latitude: string, longitude: string) => {
+    const lat = latitude;
+    const lng = longitude;
 
     const date = new Date();
 
@@ -1551,69 +1551,67 @@ export default function App() {
       },
     };
 
-    // fetch(url, options)
-    //   .then((res) => res.json())
-    //   .then((result) => {
-    //     console.log(result.list[0].main.temp);
-    //   });
-    const formatedTodayDate = format(new Date(), "eeee, MMMM do");
+    fetch(url, options)
+      .then((res) => res.json())
+      .then((result) => {
+        const formatedTodayDate = format(new Date(), "eeee, MMMM do");
 
-    const tempCity = {
-      name: dane.city.name,
-      country: dane.city.country,
-      lat: dane.city.coord.lat,
-      lng: dane.city.coord.lon,
-      date: formatedTodayDate,
-    };
+        const tempCity = {
+          name: result.city.name,
+          country: result.city.country,
+          lat: result.city.coord.lat.toString(),
+          lng: result.city.coord.lon.toString(),
+        };
 
-    setCity(tempCity);
+        setCity(tempCity);
 
-    const newWeather = {
-      temp_c: parseInt(dane.list[0].main.temp.toFixed(2)),
-      temp_f: parseInt((dane.list[0].main.temp * 1.8 + 32).toFixed(2)),
-      icon: dane.list[0].weather[0].icon,
-      description: dane.list[0].weather[0].description,
-      feelslike_c: parseInt(dane.list[0].main.feels_like.toFixed(2)),
-      feelslike_f: parseInt((dane.list[0].main.feels_like * 1.8 + 32).toFixed(2)),
-      pressure: dane.list[0].main.pressure,
-      uv: 2,
-      precip_mm: dane.list[0].rain ? dane.list[0].rain["3h"] : 0,
-      wind_kph: dane.list[0].wind.speed,
-      humidity: dane.list[0].main.humidity,
-      cloud: dane.list[0].clouds.all,
-      visibility: dane.list[0].visibility,
-      in_celcius: true,
-    };
+        const newWeather = {
+          temp_c: parseInt(result.list[0].main.temp.toFixed(2)),
+          temp_f: parseInt((result.list[0].main.temp * 1.8 + 32).toFixed(2)),
+          icon: result.list[0].weather[0].icon,
+          description: result.list[0].weather[0].description,
+          feelslike_c: parseInt(result.list[0].main.feels_like.toFixed(2)),
+          feelslike_f: parseInt((result.list[0].main.feels_like * 1.8 + 32).toFixed(2)),
+          pressure: result.list[0].main.pressure,
+          uv: 2,
+          precip_mm: result.list[0].rain ? result.list[0].rain["3h"] : 0,
+          wind_kph: result.list[0].wind.speed,
+          humidity: result.list[0].main.humidity,
+          cloud: result.list[0].clouds.all,
+          visibility: result.list[0].visibility,
+          in_celcius: true,
+          date: formatedTodayDate,
+        };
 
-    setWeather(newWeather);
+        setWeather(newWeather);
 
-    const newHourly = dane.list.slice(0, 10).map((item) => {
-      return {
-        time: format(item.dt_txt, "HH:mm"),
-        temp_c: parseInt(item.main.temp.toFixed(2)),
-        temp_f: parseInt((item.main.temp * 1.8 + 32).toFixed(2)),
-      };
-    });
+        const newHourly = result.list.slice(0, 10).map((item: any) => {
+          return {
+            time: format(item.dt_txt, "HH:mm"),
+            temp_c: parseInt(item.main.temp.toFixed(2)),
+            temp_f: parseInt((item.main.temp * 1.8 + 32).toFixed(2)),
+          };
+        });
 
-    setHourlyTemperature(newHourly);
+        setHourlyTemperature(newHourly);
 
-    const filteredForecastList = dane.list.filter((item) => format(item.dt_txt, "HH:mm:ss") == format(dane.list[0].dt_txt, "HH:mm:ss"));
+        const filteredForecastList = result.list.filter((item: any) => format(item.dt_txt, "HH:mm:ss") == format(dane.list[0].dt_txt, "HH:mm:ss"));
 
-    const newForecast = filteredForecastList.map((item) => {
-      return {
-        date_day: format(item.dt_txt, "eeee"),
-        temp_c: parseInt(item.main.temp.toFixed(2)),
-        temp_f: parseInt((item.main.temp * 1.8 + 32).toFixed(2)),
-        icon: item.weather[0].icon,
-      };
-    });
+        const newForecast = filteredForecastList.map((item: any) => {
+          return {
+            date_day: format(item.dt_txt, "eeee"),
+            temp_c: parseInt(item.main.temp.toFixed(2)),
+            temp_f: parseInt((item.main.temp * 1.8 + 32).toFixed(2)),
+            icon: item.weather[0].icon,
+          };
+        });
 
-    setForecast(newForecast.splice(1, 5));
+        setForecast(newForecast.splice(1, 5));
+      });
   };
 
-  const ChangeCity = (e: React.FormEvent) => {
-    e.preventDefault();
-    FetchData();
+  const ChangeCity = (latitude: string, longitude: string) => {
+    FetchData(latitude, longitude);
   };
 
   const switchStatus = (e: boolean) => {
@@ -1626,7 +1624,17 @@ export default function App() {
   };
 
   useEffect(() => {
-    FetchData();
+    if (city.name === "") {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          FetchData(position.coords.latitude.toString(), position.coords.longitude.toString());
+        },
+        (error) => {
+          // Use default coordinates if access to location is blocked
+          FetchData("40.73061", "-73.935242");
+        }
+      );
+    }
   }, []);
 
   return (
@@ -1635,7 +1643,7 @@ export default function App() {
 
       <div className="weather-data-container">
         <div className="input-and-switch-conatiner">
-          <InputCity />
+          <InputCity handleSelectedCity={ChangeCity} />
           <DegreeSwitch onChange={switchStatus} />
         </div>
         <div className="weather-information-container">

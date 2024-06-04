@@ -16,7 +16,7 @@ export default function WeatherInformation({ weather }: WeatherInformationProps)
   return (
     <>
       <div className="weather-information">
-        <PerceivedBox feelslike={30} in_celcius={weather!.in_celcius} />
+        <PerceivedBox feelslike={weather!.feelslike_c} in_celcius={weather!.in_celcius} />
         <Pressure pressure={weather!.pressure} />
         <IndexUV uv={weather!.uv} />
         <Humidity humidity={weather!.humidity} />

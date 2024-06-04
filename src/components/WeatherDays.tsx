@@ -16,13 +16,13 @@ export default function WeatherDays({ weather, forecast, city }: WeatherDaysProp
           <span className="city">
             {city!.name}, {city!.country}
           </span>
-          <span className="day">{city!.date}</span>
+          <span className="day">{weather!.date}</span>
         </div>
 
         <div className="current-data">
           <span className="temperature">{weather!.in_celcius ? `${weather!.temp_c}°C` : `${weather!.temp_f}°F`}</span>
           <span className="description">{weather!.description}</span>
-          <img className="current-image" src={`https://openweather.site/img/wn/${weather!.icon}.png`} />
+          <img className="current-image" alt="current-weather-image" src={`https://openweather.site/img/wn/${weather!.icon}.png`} />
         </div>
 
         <div className="future-data">
@@ -31,7 +31,7 @@ export default function WeatherDays({ weather, forecast, city }: WeatherDaysProp
               <div className="future-day" key={index}>
                 <span className="future-day-text">{day.date_day}</span>
                 <span className="future-temperature">{weather!.in_celcius ? `${day.temp_c}°C` : `${day.temp_f}°F`}</span>
-                <img className="future-image" src={`https://openweather.site/img/wn/${day!.icon}.png`} />
+                <img className="future-image" alt="forecast-weather-image" src={`https://openweather.site/img/wn/${day!.icon}.png`} />
               </div>
             );
           })}

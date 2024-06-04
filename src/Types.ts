@@ -13,6 +13,7 @@ type currentWeather = {
   cloud: number;
   visibility: number;
   in_celcius: boolean;
+  date: string;
 };
 
 type forecastWeather = {
@@ -31,9 +32,8 @@ type upcomingHours = {
 type City = {
   country: string;
   name: string;
-  lat: number;
-  lng: number;
-  date: string;
+  lat: string;
+  lng: string;
 };
 
 export type { currentWeather, forecastWeather, upcomingHours, City };
