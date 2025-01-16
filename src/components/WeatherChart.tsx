@@ -36,7 +36,7 @@ export default function WeatherTemperature({ in_celcius, hourlyData }: WeatherCh
       <YAxis domain={[minTemp! - 3, maxTemp! + 3]} allowDataOverflow={true} hide={true} />
       <XAxis xAxisId={0} dataKey={`${in_celcius ? "temp_c" : "temp_f"}`} strokeOpacity={0} orientation="top" />
       <XAxis xAxisId={1} dataKey="time" strokeOpacity={0} orientation="bottom" />
-      <Area type="linear" dataKey={`${in_celcius ? "temp_c" : "temp_f"}`} stroke="#2180e1" fill="#2180e1" />
+      <Area type="linear" dataKey={`${in_celcius ? "temp_c" : "temp_f"}`} stroke="#111111" fill="#111111" />
     </AreaChart>
   );
 
