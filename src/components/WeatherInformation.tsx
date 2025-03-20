@@ -6,10 +6,10 @@ import Precipitation from "./WeatherData/Precipitation";
 import Pressure from "./WeatherData/Pressure";
 import VisibilityBox from "./WeatherData/VisibilityBox";
 import WindSpeed from "./WeatherData/WindSpeed";
-import { currentWeather } from "../Types";
+import { currentWeatherType } from "../Types";
 
 interface WeatherInformationProps {
-  weather?: currentWeather;
+  weather?: currentWeatherType;
 }
 
 export default function WeatherInformation({ weather }: WeatherInformationProps) {

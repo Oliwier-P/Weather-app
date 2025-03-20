@@ -1,11 +1,11 @@
 import { AreaChart, CartesianGrid, Area, XAxis, YAxis, ResponsiveContainer } from "recharts";
-import { upcomingHours } from "../Types";
+import { upcomingHoursType } from "../Types";
 import { useEffect, useState } from "react";
 import { set } from "date-fns";
 
 interface WeatherChartProps {
   in_celcius: boolean;
-  hourlyData: upcomingHours[];
+  hourlyData: upcomingHoursType[];
 }
 
 export default function WeatherTemperature({ in_celcius, hourlyData }: WeatherChartProps) {

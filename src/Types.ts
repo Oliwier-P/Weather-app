@@ -1,4 +1,4 @@
-type currentWeather = {
+type currentWeatherType = {
   temp_c: number;
   temp_f: number;
   icon: string;
@@ -16,24 +16,31 @@ type currentWeather = {
   date: string;
 };
 
-type forecastWeather = {
+type forecastWeatherType = {
   date_day: string;
   temp_c: number;
   temp_f: number;
   icon: string;
 };
 
-type upcomingHours = {
+type upcomingHoursType = {
   time: string;
   temp_c: number;
   temp_f: number;
 };
 
-type City = {
+type cityType = {
   country: string;
   name: string;
   lat: string;
   lng: string;
 };
 
-export type { currentWeather, forecastWeather, upcomingHours, City };
+type fetchDataResponseType = {
+  newCity: cityType;
+  newWeather: currentWeatherType;
+  newHourly: upcomingHoursType[];
+  newForecast: forecastWeatherType[];
+};
+
+export type { currentWeatherType, forecastWeatherType, upcomingHoursType, cityType, fetchDataResponseType };

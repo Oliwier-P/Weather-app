@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { City } from "../Types";
+import { cityType } from "../Types";
 import cities from "../cities.json";
 import { Autocomplete, TextField, Box } from "@mui/material";
 import { v4 as uuidv4 } from "uuid";
 
-const citiesNames = cities as City[];
+const citiesNames = cities as cityType[];
 
 interface InputCityProps {
   handleSelectedCity: (latitude: string, longitude: string) => void;
@@ -23,13 +23,13 @@ export default function InputCity({ handleSelectedCity }: InputCityProps) {
     }
   };
 
-  const handleChange = (event: any, newValue?: City | null) => {
+  const handleChange = (event: any, newValue?: cityType | null) => {
     if (newValue != undefined) {
       handleSelectedCity(newValue.lat, newValue.lng);
     }
   };
 
-  const filterOptions = (options: City[], state: any) => {
+  const filterOptions = (options: cityType[], state: any) => {
     const filtered = options.filter((option) => option.name.toLowerCase().includes(state.inputValue.toLowerCase()));
     return filtered.slice(0, 15);
   };

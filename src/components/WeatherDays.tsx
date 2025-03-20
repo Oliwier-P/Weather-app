@@ -1,9 +1,9 @@
-import { currentWeather, forecastWeather, City } from "../Types";
+import { currentWeatherType, forecastWeatherType, cityType } from "../Types";
 
 interface WeatherDaysProps {
-  weather: currentWeather;
-  forecast: forecastWeather[];
-  city: City;
+  weather: currentWeatherType;
+  forecast: forecastWeatherType[];
+  city: cityType;
 }
 
 export default function WeatherDays({ weather, forecast, city }: WeatherDaysProps) {
