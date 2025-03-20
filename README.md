@@ -102,4 +102,4 @@ VITE_API_KEY=your-openweather-api-key-here
 - React
 - Typescript
 - Sass
-- OpenWeather API
+- OpenWeather API (https://rapidapi.com/worldapi/api/open-weather13)
